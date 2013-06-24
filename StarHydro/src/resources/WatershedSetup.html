@@ -1,0 +1,105 @@
+<html>
+<form action='test'>
+<table width='100%' style='background: #e0e0e0'>
+	<tr style='background:#d0d0d0'>
+		<td colspan='2'><span style='font-size:16; font-family:arial; font-weight:bold'>
+			1. Select map </span> 
+			<tmpl_if map_more> <a href='map_more' style='font-size: 10; font-family:arial;'>more details</a> </tmpl_if> 
+			<tmpl_unless map_more> 
+			<a href='map_more' style='font-size: 10; font-family:arial'>hide details</a><br>
+		<span style='font-size: 11; font-family:arial; font-weight: normal'>&nbsp;
+		&nbsp; Here goes some more information... Here goes some more
+		information... Here goes some more information... Here goes some more
+		information... Here goes some more information... </span> </tmpl_unless></td>
+
+	</tr>
+	<tr>
+		<td>Map name</td>
+		<td><tmpl_var map_more></td>
+	</tr>
+	<tr>
+		<td>NE Longitute</td>
+		<td>NR</td>
+	</tr>
+	<tr>
+		<td>NE Latitude</td>
+		<td>NR</td>
+	</tr>
+	<tr>
+		<td>DEM resolution</td>
+		<td>Nr</td>
+	</tr>
+	<tr>
+		<td>Dimension</td>
+		<td>2432 * 3000</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+		<center><object classid='star.swing.xJButton' label='Change map' actionCommand='change_map'></object> <br>
+		<object classid='star.swing.xJProgressBar' progressType='change_map'></object><br>
+		</center>
+		</td>
+	</tr>
+
+	<tr style='background:#d0d0d0'>
+		<td colspan='2' style='font-size: 11; font-family:arial; font-weight: normal'><span style='font-size:16; font-family:arial; font-weight:bold'>
+		2. Select watershed outlet </span> 
+			<a id="ws_more_0" href='ws_more' style='font-size: 10; font-family:arial;'>more details</a> 
+			<a id="ws_more_1" href='ws_more' style='font-size: 10; font-family:arial'>hide details</a>
+			<span id="ws_more_2">
+			&nbsp; Here goes some more information... Here goes some more
+			information... Here goes some more information... Here goes some more
+			information... Here goes some more information... 
+			</span>
+		</td>
+	</tr>
+	<tr>
+		<td>Outlet Longitute</td>
+		<td><input type='text' name='long' value='1231123'></td>
+	</tr>
+	<tr>
+		<td>Outlet Latitude</td>
+		<td><input type='text' name='lat' value='1234'></td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+				<object classid='mit.swing.xJSlider' progressType='preview_outlet'></object><br>
+		<center><object classid='star.swing.xJButton' label='Preview outlet' actionCommand='preview_outlet'></object></center>
+		</td>
+	</tr>
+	<tr style='background:#d0d0d0'>
+		<td colspan='2'><span
+			style='font-size:16; font-family:arial; font-weight:bold'>3. Confirm watershed </span> 
+			<tmpl_if confirm_more> <a href='confirm_more' style='font-size: 10; font-family:arial;'>more details</a> </tmpl_if> 
+			<tmpl_unless confirm_more> <a href='confirm_more' style='font-size: 10; font-family:arial'>hide details</a><br>
+		<span style='font-size: 11; font-family:arial; font-weight: normal'>&nbsp;
+		&nbsp; Here goes some more information... Here goes some more
+		information... Here goes some more information... Here goes some more
+		information... Here goes some more information... </span> </tmpl_unless></td>
+	</tr>
+	<tr>
+		<td>Watershed size</td>
+		<td>1112341 m<sup>2</sup></td>
+	</tr>
+	<tr>
+		<td>Watershed relief</td>
+		<td>45 m</td>
+	</tr>
+	<tr>
+		<td>Outlet height</td>
+		<td>124 m</td>
+	</tr>
+	<tr>
+		<td>Maximum watershed height</td>
+		<td>169 m</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+				<center><object classid='star.swing.xJButton' label='Use this outlet point' actionCommand='commit_outlet'></object></center>		
+		</td>
+	</tr>
+</table>
+
+</form>
+<hr>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="generated_src"/>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="src" path="generated_tests"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/STAR_SignalSystem"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/ant-tasks/apache-ant-compress.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/charts/jcommon-1.0.15.jar" sourcepath="/CommonLibrariesSource/charts/jcommon-1.0.15-source.zip"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/charts/jfreechart-1.0.12.jar" sourcepath="/CommonLibrariesSource/charts/jfreechart-1.0.12-source.zip"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/swing/miglayout15-swing.jar" sourcepath="/CommonLibrariesSource/swing/miglayout-src.zip"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/swing/swing-worker.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/swing/swingx-0.9.1.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/swing/substance.jar"/>
+	<classpathentry exported="true" kind="lib" path="/StarHydro/StarHydro.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Plugin-Commons"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/java3d/ext/j3dcore.jar" sourcepath="/CommonLibrariesSource/java3d/j3d-1_5_2-src.zip">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="CommonLibrariesBin/java3d/windows-i586"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/java3d/ext/j3dutils.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/java3d/ext/vecmath.jar"/>
+	<classpathentry kind="lib" path="/StarHydro/lib/forms-1.1.0.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/microsoft_office/poi/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/microsoft_office/poi/junit-3.8.1.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/microsoft_office/poi/log4j-1.2.13.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/microsoft_office/poi/poi-3.2-FINAL-20081019.jar" sourcepath="/CommonLibrariesSource/microsoft_office/poi/poi-apidocs.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/CommonLibrariesSource/microsoft_office/poi/poi-apidocs.zip!/apidocs"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/microsoft_office/poi/poi-contrib-3.2-FINAL-20081019.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/microsoft_office/poi/poi-scratchpad-3.2-FINAL-20081019.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/jlfgr-1_0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

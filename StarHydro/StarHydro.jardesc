@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jardesc>
+<jar path="StarHydro/StarHydro.jar"/>
+<options buildIfNeeded="true" compress="true" descriptionLocation="/StarHydro/StarHydro.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+<storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+<selectedProjects/>
+<manifest generateManifest="true" mainClassHandleIdentifier="=StarHydro/src&lt;app{Main.java[Main" manifestLocation="/STAR_SignalSystem/META-INF/MANIFEST.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+<sealing sealJar="false">
+<packagesToSeal/>
+<packagesToUnSeal/>
+</sealing>
+</manifest>
+<selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+<javaElement handleIdentifier="=Plugin-Commons/&lt;test.romi"/>
+<javaElement handleIdentifier="= "/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;plugin.preferences"/>
+<javaElement handleIdentifier="=STAR_SignalSystem/&lt;mit.swing.ui"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;edu.mit.star.plugins.filemanager.interfaces"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;star.j3d.ui"/>
+<javaElement handleIdentifier="=StarHydro/generated_src"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;edu.mit.star.plugins.filemanager.helpers"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;test.preferences"/>
+<javaElement handleIdentifier="=STAR_SignalSystem/&lt;star.event"/>
+<javaElement handleIdentifier="=STAR_SignalSystem/&lt;mit.swing"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;star.math"/>
+<javaElement handleIdentifier="=STAR_SignalSystem/&lt;mit.swing.event"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;star.j3d.ui.signal"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;plugin"/>
+<javaElement handleIdentifier="=STAR_SignalSystem/&lt;mit.awt"/>
+<javaElement handleIdentifier="=STAR_SignalSystem/&lt;star.annotations"/>
+<javaElement handleIdentifier="=STAR_SignalSystem/&lt;mit.awt.event"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;star.ui"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;romi"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;edu.mit.star.common.ui"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;edu.mit.star.common.filemanager"/>
+<javaElement handleIdentifier="=Plugin-Commons/&lt;test.star.j3d.ui"/>
+</selectedElements>
+</jardesc>

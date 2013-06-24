@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/lib/tools.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/lib/cos-05Nov2002.jar" sourcepath="/CommonLibrariesSource/lib/cos-05Nov2002.zip"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/swing/miglayout15-swing.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

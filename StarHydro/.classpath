@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/STAR_SignalSystem"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Plugin-Commons"/>
+	<classpathentry excluding="app/HydrologyGUI.java|app/ui/watershed/|star/hydrology/ui/EventReceiver.java|star/hydrology/ui/selectors/|utils/EventRaiser.java|app/lwjgl/" kind="src" path="src"/>
+	<classpathentry kind="src" path="generated_src"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="CommonLibraries/java3d_windows/x32/bin"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/StarHydro2/StarHydro2.jar" sourcepath="/StarHydro2/src"/>
+	<classpathentry kind="lib" path="lib/forms-1.1.0.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/ant-tasks/apache-ant-compress.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/jogl/gluegen-rt.jar" sourcepath="/CommonLibrariesSource/jogl/gluegen-src.zip"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/charts/jcommon-1.0.15.jar" sourcepath="/CommonLibrariesSource/charts/jcommon-1.0.15-source.zip"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/charts/jfreechart-1.0.12.jar" sourcepath="/CommonLibrariesSource/charts/jfreechart-1.0.12-source.zip"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/jogl/jogl.jar" sourcepath="/CommonLibrariesSource/jogl/jogl-1.1.2-pre-20080523-src.zip"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/swing/l2fprod-common-all.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/swing/miglayout15-swing.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/microsoft_office/poi/poi-3.2-FINAL-20081019.jar" sourcepath="/CommonLibrariesSource/microsoft_office/poi/poi-apidocs.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/CommonLibrariesSource/microsoft_office/poi/poi-apidocs.zip!/apidocs"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/lib/StarJFlvLib.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/swing/swing-worker.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/swing/swingx-0.9.1.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/java3d/ext/j3dcore.jar" sourcepath="/CommonLibrariesSource/java3d/j3d-1_5_2-src.zip">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="CommonLibrariesBin/java3d/windows-i586"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/java3d/ext/j3dutils.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/java3d/ext/vecmath.jar"/>
+	<classpathentry kind="lib" path="lib/jetty-all-7.2.2.v20101205.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="/CommonLibrariesBin/jlfgr-1_0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

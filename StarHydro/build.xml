@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="StarHydro" default="build" basedir=".">
+	<!-- <taskdef name="apt" classname="org.apache.tools.ant.taskdefs.Apt" />-->
+	<!-- <taskdef name="apt" classname="com.sun.tools.ws.ant.Apt" /> -->
+<!--	<taskdef name="apt" classpath='../Plugin-Commons/ant-apt.jar' classname="org.apache.tools.ant.taskdefs.Apt" />
+-->	<taskdef name="jreleaseinfo" classpath='../Plugin-Commons/lib/jreleaseinfo-1.2.0.jar' classname="ch.oscg.jreleaseinfo.anttask.JReleaseInfoAntTask" />
+
+	<property name="src" value="${basedir}/src" />
+	<property name="build" value="${basedir}/build" />
+
+	<property name="preprocess.dir" value="${basedir}/generated_src" />
+
+	<path id="apt.classpath">
+		<pathelement path="${basedir}/bin" />
+		<!-- <pathelement path="../StarHydroHelpers/bin" /> -->
+		<pathelement path="../STAR_SignalSystem" />
+		<pathelement path="../Plugin-Commons/bin" /> 
+		<pathelement path="../CommonLibrariesBin/java3d/ext/j3dcore.jar" />
+		<pathelement path="../CommonLibrariesBin/java3d/ext/j3dutils.jar" />
+		<pathelement path="../CommonLibrariesBin/java3d/ext/vecmath.jar" />
+		<!-- <pathelement path="../CommonLibraries/lib/substance.jar" /> -->
+				
+		<pathelement path="../Plugin-Commons/lib/junit-4.1.jar" />
+		<!-- <pathelement path="../JRuby/lib/ruby-engine.jar" /> -->
+		<pathelement path="../CommonLibrariesBin/swing/swingx-0.9.1.jar" />
+		<pathelement path="lib/forms-1.1.0.jar" />
+		<pathelement path="lib/jetty-all-7.2.2.v20101205.jar"/>
+		<pathelement path="lib/servlet-api-2.5.jar"/>
+		<pathelement path="../CommonLibrariesBin/swing/miglayout15-swing.jar" />
+		<pathelement path="../CommonLibrariesBin/charts/jfreechart-1.0.12.jar" />
+		<pathelement path="../CommonLibrariesBin/charts/jcommon-1.0.15.jar" />
+		<pathelement path="../CommonLibrariesBin/microsoft_office/poi/poi-3.2-FINAL-20081019.jar" />
+		<!--
+		<pathelement path="../CommonLibraries/jogl/jogl-1.1.2-pre-20080523-windows-i586/lib/jogl.jar" />
+		<pathelement path="../CommonLibraries/jogl/jogl-1.1.2-pre-20080523-windows-i586/lib/gluegen-rt.jar" />
+		-->
+		<pathelement path="../CommonLibrariesBin/swing/l2fprod-common-all.jar" />		
+		<pathelement path="../CommonLibrariesBin/lib/StarJFLVlib.jar" />
+			
+		
+	</path>
+	
+	<target name="build" depends="apt,compile,jar">
+	</target>
+
+	<target name="clean" depends="">
+			<echo>Deleting</echo>
+			<mkdir dir="${build}"/>
+			<delete>
+				<fileset dir="${src}">
+					<include name="**/*.class" />
+				</fileset>			
+				<fileset dir="${build}">
+					<include name="**/*.class" />
+				</fileset>						
+				<fileset dir="${preprocess.dir}">
+					<include name="**/*.class" />
+				</fileset>						
+			</delete>
+		</target>
+	
+	<target name="publish" depends="build">
+		<echo>Publishing and signing</echo>
+		<exec executable="scp.exe">
+			<arg value="StarHydro.jar" />
+			<arg value="ceraj@starapp.mit.edu:/home/star/star/media/uploads/star/jar/hydro/StarHydro_beta.jar" />
+		</exec>
+		<exec executable="scp.exe">
+			<arg value="../STAR_SignalSystem/SignalSystem.jar" />
+			<arg value="ceraj@starapp.mit.edu:/home/star/star/media/uploads/star/jar/hydro/SignalSystem.jar" />
+		</exec>
+		<exec executable="scp.exe">
+			<arg value="../Plugin-Commons/PluginCommons.jar" />
+			<arg value="ceraj@starapp.mit.edu:/home/star/star/media/uploads/star/jar/hydro/PluginCommons.jar" />
+		</exec>
+		<exec executable="scp.exe">
+			<arg value="../StarHydro2/StarHydro2.jar" />
+			<arg value="ceraj@starapp.mit.edu:/home/star/star/media/uploads/star/jar/hydro/StarHydro2.jar" />
+		</exec>		
+		<exec executable="ssh.exe">
+			<arg value="-ssh" />
+			<arg value="starapp.mit.edu" />
+			<arg value="-l" />
+			<arg value="ceraj" />
+			<arg value="/home/star/build/sign_hydro_beta.sh" />
+		</exec>
+
+	</target>
+
+	<target name="compile" depends="apt">
+		<echo>Updating build date</echo>
+
+		<jreleaseinfo targetDir="src" packagename="app" classname="Version" project="${project}" version="${version}">
+			<parameter name="Year" value="${year}" />
+			<parameter name="BuildTimestamp" value="${build.time}" />
+		</jreleaseinfo>
+
+		<echo>Compiling</echo>
+		<javac srcdir="${src};${preprocess.dir}" classpathref="apt.classpath" destdir="${build}" debug="on" includes="**/*.java" optimize="on" target="1.5" />
+
+
+	</target>
+
+	<target name="apt" depends="clean">
+		<echo>Precompiling</echo>
+		
+		<apt srcdir="${src}" classpathref="apt.classpath" debug="on" includes="**/*.java" factory="star.annotations.ProcessorFactory" preprocessdir="${preprocess.dir}" target="1.5" />
+		
+	</target>
+
+	<target name="jar" depends="">
+		<echo>Creating JAR</echo>
+		<echo>Creating JAR</echo>
+		<jar destfile="StarHydro.jar">
+			<fileset dir="build" id="build">
+				<include name="**" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+			</fileset>
+			<fileset dir="src" id="pref">
+				<include name="preferences/**" />
+				<include name="resources/**" />
+			</fileset>
+		</jar>
+		<jar destfile="../STAR_SignalSystem/SignalSystem.jar">
+			<fileset dir="../STAR_SignalSystem" id="SignalSystem">
+				<include name="**" />
+				<exclude name="**/*.jar*" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+				<exclude name="**/*.java" />
+				<exclude name="star/junit/**" />
+			</fileset>
+		</jar>
+		<jar destfile="../Plugin-Commons/PluginCommons.jar">
+			<fileset dir="../Plugin-Commons/bin" id="PluginCommons">
+				<include name="**" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+				<exclude name="**/*.jar*" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</jar>
+	</target>
+
+
+
+</project>

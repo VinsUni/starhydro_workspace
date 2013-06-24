@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="StarHydro" default="build" basedir=".">
+	<taskdef name="apt" classname="org.apache.tools.ant.taskdefs.Apt" />
+	<taskdef name="jreleaseinfo" classname="ch.oscg.jreleaseinfo.anttask.JReleaseInfoAntTask" />
+
+	<property name="src" value="${basedir}/src" />
+	<property name="build" value="${basedir}/build" />
+
+	<property name="preprocess.dir" value="${basedir}/generated_src" />
+
+	<property name="src.tests" value="${basedir}/tests" />
+	<property name="preprocess.dir.tests" value="${basedir}/generated_tests" />
+
+	<path id="apt.classpath">
+		<pathelement path="${basedir}/bin" />
+		<pathelement path="../STAR_SignalSystem" />
+		<pathelement path="../StarHydro/lib/miglayout15-swing.jar" />
+		<pathelement path="../Plugin-Commons/lib/junit-4.1.jar" />
+		<pathelement path="../CommonLibrariesBin/swing/swing-worker.jar" />
+
+	</path>
+	
+	<target name="build" depends="apt,compile,jar">
+	</target>
+
+	<target name="compile" depends="apt">
+		<echo>Updating build date</echo>
+
+		<jreleaseinfo targetDir="src" packagename="app" classname="Version" project="${project}" version="${version}">
+			<parameter name="Year" value="${year}" />
+			<parameter name="BuildTimestamp" value="${build.time}" />
+		</jreleaseinfo>
+
+		<echo>Compiling</echo>
+		<javac srcdir="${src};${preprocess.dir};${src.tests};${preprocess.dir.tests}" classpathref="apt.classpath" destdir="${build}" debug="on" includes="**/*.java" optimize="on" target="1.5" />
+
+
+	</target>
+
+	<target name="apt" depends="">
+		<echo>Precompiling</echo>
+		<apt srcdir="${src}" classpathref="apt.classpath" debug="on" includes="**/*.java" factory="star.annotations.ProcessorFactory" preprocessdir="${preprocess.dir}" fork="on" target="1.5" />
+		<apt srcdir="${src.tests}" classpathref="apt.classpath" debug="on" includes="**/*.java" factory="star.annotations.ProcessorFactory" preprocessdir="${preprocess.dir.tests}" fork="on" target="1.5" />
+	</target>
+
+	<target name="jar" depends="">
+		<echo>Creating JAR</echo>
+		<jar destfile="StarHydro2.jar">
+			<fileset dir="build" id="build">
+				<include name="**" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+			</fileset>
+			<fileset dir="src" id="pref">
+				<include name="preferences/**" />
+			</fileset>
+			<fileset dir="src" id="resoruces">
+				<include name="resources/**" />
+			</fileset>
+			
+		</jar>
+		<jar destfile="../STAR_SignalSystem/SignalSystem.jar">
+			<fileset dir="../STAR_SignalSystem" id="SignalSystem">
+				<include name="**" />
+				<exclude name="**/*.jar*" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+				<exclude name="**/*.java" />
+				<exclude name="star/junit/**" />
+			</fileset>
+		</jar>
+		<jar destfile="../Plugin-Commons/PluginCommons.jar">
+			<fileset dir="../Plugin-Commons/bin" id="PluginCommons">
+				<include name="**" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+				<exclude name="**/*.jar*" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</jar>
+	</target>
+
+
+
+</project>

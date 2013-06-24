@@ -1,0 +1,108 @@
+<html>
+<form action='test'>
+<table width='100%'>
+	<tr>
+		<td colspan='2'>
+		<h2>1. Select map 
+			<tmpl_if map_more>
+				<a href='map_more' style='font-size: 10; font-family:arial'>show more...</a>
+			</tmpl_if>
+			<tmpl_unless map_more>
+				<a href='map_more' style='font-size: 10; font-family:arial'>show less...</a>
+			</tmpl_unless>
+		</h2>
+		<tmpl_unless map_more>
+			&nbsp; &nbsp; Here goes some more information...
+		</tmpl_unless>
+		</td>
+
+	</tr> 
+	<tr>
+		<td>Map name</td>
+		<td> <tmpl_var map_more> </td>
+	</tr>
+	<tr>
+		<td>NE Longitute</td>
+		<td>NR</td>
+	</tr>
+	<tr>
+		<td>NE Latitude</td>
+		<td>NR</td>
+	</tr>
+	<tr>
+		<td>DEM resolution</td>
+		<td>Nr</td>
+	</tr>
+	<tr>
+		<td>Dimension</td>
+		<td>2432 * 3000</td>
+	</tr>
+		<tr>
+		<td colspan='2'>
+		<center><input type='submit' name='submit' value='Change map'></center>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan='2'>
+		<hr>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+		<h1>2. Select watershed outlet <a href='map_more'
+			style='font-size: 10; font-family:arial'>learn more...</a></h1>
+		</td>
+	</tr>
+	<tr>
+		<td>Outlet Longitute</td>
+		<td><input type='text' name='long' value='1231123'></td>
+	</tr>
+	<tr>
+		<td>Outlet Latitude</td>
+		<td><input type='text' name='lat' value='1234'></td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+		<center><input type='submit' name='submit'
+			value='Preview outlet'></center>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+		<hr>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+		<h2>3. Select watershed outlet <a href='map_more'
+			style='font-size: 10; font-family:arial'>learn more...</a></h2>
+		</td>
+	</tr>
+	<tr>
+		<td>Watershed size</td>
+		<td>1112341 m<sup>2</sup></td>
+	</tr>
+	<tr>
+		<td>Watershed relief</td>
+		<td>45 m</td>
+	</tr>
+	<tr>
+		<td>Outlet height</td>
+		<td>124 m</td>
+	</tr>
+	<tr>
+		<td>Maximum watershed height</td>
+		<td>169 m</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+		<center><input type='submit' name='submit'
+			value='Use this outlet point'></center>
+		</td>
+	</tr>
+</table>
+
+</form>
+<hr>
+</html>

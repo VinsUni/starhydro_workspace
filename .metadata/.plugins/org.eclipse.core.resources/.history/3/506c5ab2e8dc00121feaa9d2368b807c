@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="StarHydro" default="build" basedir=".">
+	<taskdef name="apt" classname="org.apache.tools.ant.taskdefs.Apt" />
+	<taskdef name="jreleaseinfo" classname="ch.oscg.jreleaseinfo.anttask.JReleaseInfoAntTask" />
+
+	<property name="src" value="${basedir}/src" />
+	<property name="build" value="${basedir}/build" />
+
+	<property name="preprocess.dir" value="${basedir}/generated_src" />
+
+	<property name="src.tests" value="${basedir}/tests" />
+	<property name="preprocess.dir.tests" value="${basedir}/generated_tests" />
+
+	<path id="apt.classpath">
+		<pathelement path="${basedir}/bin" />
+		<pathelement path="../STAR_SignalSystem" />
+		<pathelement path="../StarHydro/lib/miglayout15-swing.jar" />
+		<pathelement path="../Plugin-Commons/lib/junit-4.1.jar" />
+		<pathelement path="../CommonLibrariesBin/swing/swing-worker.jar" />
+		<!--
+		<pathelement path="../StarHydroHelpers/bin" />
+		<pathelement path="../Plugin-Commons/bin" />
+		<pathelement path="../java3d/bin" />
+
+		<pathelement path="../JRuby/lib/ruby-engine.jar" />
+		<pathelement path="lib/swingx-0.8.0.jar" />
+		<pathelement path="lib/swingx-0.8.0.jar" />
+		<pathelement path="lib/forms-1.1.0.jar" />
+		<pathelement path="/java/jfreechart-1.0.2/lib/jfreechart-1.0.2.jar" />
+		<pathelement path="/java/jfreechart-1.0.2/lib/jcommon-1.0.5.jar" />
+
+		
+		-->
+	</path>
+	
+	<target name="build" depends="apt,compile,jar">
+	</target>
+<!--
+	<target name="publish" depends="build">
+		<echo>Publishing and signing</echo>
+		<exec executable="C:\\Documents and Settings\\ceraj\\Desktop\\kerberos\\pscp.exe">
+			<arg value="C:\\Documents and Settings\\ceraj\\workspace64\\StarHydro\\StarHydro.jar" />
+			<arg value="ceraj@starapp.mit.edu:/home/ceraj/star/hydro/StarHydro.jar" />
+		</exec>
+		<exec executable="C:\\Documents and Settings\\ceraj\\Desktop\\kerberos\\plink.exe">
+			<arg value="-ssh" />
+			<arg value="starapp.mit.edu" />
+			<arg value="-l" />
+			<arg value="ceraj" />
+			<arg value="/home/ceraj/build/sign_hydro.sh" />
+		</exec>
+
+	</target>
+
+	<target name="webpublish" depends="">
+		<exec executable="C:\\Program Files (x86)\\OneNote Web Exporter (0.5.0)\\cwebber.exe" dir="C:\\Program Files (x86)\\OneNote Web Exporter (0.5.0)">
+			<arg value="StarHydro" />
+			<arg value="C:\\Documents and Settings\\ceraj\\My Documents\\OneNote Notebooks\\StarHydro\\webview.html" />
+		</exec>
+
+		<exec executable="C:\\Documents and Settings\\ceraj\\Desktop\\kerberos\\pscp.exe">
+			<arg value="-r" />
+			<arg value="c:\\documents and settings\\ceraj\\my documents\\onenote notebooks\\starhydro" />
+			<arg value="ceraj@starapp.mit.edu:/home/ceraj/star/hydro/web" />
+		</exec>
+	</target>
+-->
+	<target name="compile" depends="apt">
+		<echo>Updating build date</echo>
+
+		<jreleaseinfo targetDir="src" packagename="app" classname="Version" project="${project}" version="${version}">
+			<parameter name="Year" value="${year}" />
+			<parameter name="BuildTimestamp" value="${build.time}" />
+		</jreleaseinfo>
+
+		<echo>Compiling</echo>
+		<javac srcdir="${src};${preprocess.dir};${src.tests};${preprocess.dir.tests}" classpathref="apt.classpath" destdir="${build}" debug="on" includes="**/*.java" optimize="on" target="1.5" />
+
+
+	</target>
+
+	<target name="apt" depends="">
+		<echo>Precompiling</echo>
+		<apt srcdir="${src}" classpathref="apt.classpath" debug="on" includes="**/*.java" factory="star.annotations.ProcessorFactory" preprocessdir="${preprocess.dir}" fork="on" target="1.5" />
+		<apt srcdir="${src.tests}" classpathref="apt.classpath" debug="on" includes="**/*.java" factory="star.annotations.ProcessorFactory" preprocessdir="${preprocess.dir.tests}" fork="on" target="1.5" />
+	</target>
+
+	<target name="jar" depends="">
+		<echo>Creating JAR</echo>
+		<jar destfile="StarHydro2.jar">
+			<fileset dir="build" id="build">
+				<include name="**" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+			</fileset>
+			<fileset dir="src" id="pref">
+				<include name="preferences/**" />
+			</fileset>
+			<fileset dir="src" id="resoruces">
+				<include name="resources/**" />
+			</fileset>
+			
+		</jar>
+		<jar destfile="../STAR_SignalSystem/SignalSystem.jar">
+			<fileset dir="../STAR_SignalSystem" id="SignalSystem">
+				<include name="**" />
+				<exclude name="**/*.jar*" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+				<exclude name="**/*.java" />
+				<exclude name="star/junit/**" />
+			</fileset>
+		</jar>
+		<jar destfile="../Plugin-Commons/PluginCommons.jar">
+			<fileset dir="../Plugin-Commons/bin" id="PluginCommons">
+				<include name="**" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+				<exclude name="**/*.jar*" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</jar>
+	</target>
+
+
+
+</project>
